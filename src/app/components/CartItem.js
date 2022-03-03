@@ -13,6 +13,26 @@ class CartItem extends PureComponent {
     //TODO: Ref
     //TODO: componentWillMount
     //TODO: state from props, qty
+
+    // called ONLY ONCE, after mounting first time
+    // making api call, set timer, subscribe data etc
+    // access to dom reference
+    componentDidMount() {
+        console.log("cart item did mount")
+    }
+
+    // called after update post render
+    componentDidUpdate() {
+        console.log("cartItem componentDidUpdate ")
+        // to set the scrool bar, set graph position in real dom directly
+        // useful when real dom added/removed dynamically
+    }
+
+    // called before removing component, called ONCE
+    // unsubscribe, stop pending api calls, stop timer
+    componentWillUnmount() {
+        console.log("cartItem component will unount")
+    }
    
     render() {
         //removeItem, updateItem are callback function as passed from Cart component to CartList to CartItem as props

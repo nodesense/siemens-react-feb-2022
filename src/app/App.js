@@ -37,9 +37,9 @@ class App extends React.Component {
                     */}
                     <Header title="Product App" />
 
-                    <Checkout />
-                    {/*                 
-                    <Cart /> */}
+                   <Checkout /> 
+         
+                    {/* <Cart /> */}
 
                     <Footer year={2022} company="ShopMall" locations = { ['BLR', 'Chennai']} />
                 </div>

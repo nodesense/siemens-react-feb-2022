@@ -8,26 +8,26 @@ class Cart extends React.Component {
     constructor(props) {
         super(props) // if we write cons, mandatory to call super/base class const
 
-        const items = []
-        for (let i = 0; i < 1000; i++) {
-            const id = i
-            const item =  {
-                id, // {id: id}
-                name: `Product ${id}`,
-                price: Math.ceil(Math.random() * 100 ),
-                qty:  Math.ceil(Math.random() * 10 )
-            }
+        // const items = []
+        // for (let i = 0; i < 1000; i++) {
+        //     const id = i
+        //     const item =  {
+        //         id, // {id: id}
+        //         name: `Product ${id}`,
+        //         price: Math.ceil(Math.random() * 100 ),
+        //         qty:  Math.ceil(Math.random() * 10 )
+        //     }
 
-            items.push(item)
-        }
+        //     items.push(item)
+        // }
         // keyword
         // state is owned by component
         // state can be mutated via setState function
         this.state = {
             amount: 0,
             totalItems: 0,
-            items : items,
-            //items: []
+           // items : items,
+            items: []
         }
     }
 

@@ -12,11 +12,13 @@ class Checkout extends React.Component {
         this.state = {
             fullName: '',
             address: '',
-            city: ''
+            city: '',
+            landmark: '',
         }
 
         // when the ui appear, we want to set the focus to fullName
         this.fullName = createRef()
+        this.landmark = createRef()
     }
 
     // we have to take form change event, take the value from real dom
@@ -44,6 +46,13 @@ class Checkout extends React.Component {
         // current is refering input dom
         this.fullName.current.focus ()
     
+    }
+
+    componentDidUpdate() {
+        console.log("Landmark dom", this.landmark.current )
+        // if ( this.landmark.current ) {
+        //     this.landmark.current.focus()
+        // }
     }
 
     render() {
@@ -75,6 +84,17 @@ class Checkout extends React.Component {
                     <option value="MUM">Mumbai</option>
                     <option value="CHE">Chenai</option>
                 </select>
+
+                {
+                    this.state.city == 'BLR' ? (
+                        <>
+                            Landmark <input name="landmark" 
+                                     value={this.state.landmark} 
+                                     onChange={this.changeHandler}
+                                     ref={this.landmark} />
+                        </>
+                    ) : false
+                }
                 
             </form>
             </div>
