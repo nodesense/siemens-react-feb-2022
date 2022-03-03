@@ -1,5 +1,7 @@
 import React from 'react';
 
+import axios from 'axios';
+
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
@@ -16,6 +18,13 @@ class ProductList extends React.Component {
     
     addToFav = (product) => {
         
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:7070/api/products")
+             .then (response => {
+                 this.setState({products: response.data})
+             })
     }
 
     render() {
