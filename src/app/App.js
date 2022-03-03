@@ -11,6 +11,7 @@ import {BrowserRouter as Router,
         Route, 
         Switch
     } from 'react-router-dom';
+import ProductList from './components/ProductList';
 
 const Home = () => (<div>
                         <h2>Home</h2>
@@ -59,6 +60,9 @@ class App extends React.Component {
                         <Switch>
                             <Route path="/cart">
                                 <Cart />
+                            </Route>
+                            <Route path="/products">
+                                <ProductList />
                             </Route>
                             <Route path="/checkout">
                                 <Checkout />
