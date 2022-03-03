@@ -13,6 +13,19 @@ import CartItem from "./CartItem";
     }
      
     //TODO: shouldComponentUpdate
+    // control/decide whether render should be called or not based on data comparisons
+    // if return value true, then render called, v.doms created, diff performed, and patches(changes) applied to real dom
+    // if return value is false, no render called.
+    shouldComponentUpdate(nextProps, nextState) {
+        // nextNext is upcoming render
+        console.log("CartList should component update next props", nextProps)
+        // this.props passed for previous render
+        console.log("CartList should component update this.props", this.props)
+
+        console.log("nextProps.items != this.props.items", nextProps.items != this.props.items)
+
+        return nextProps.items != this.props.items;
+    }
     
     render() {
         console.log("CartList Render");

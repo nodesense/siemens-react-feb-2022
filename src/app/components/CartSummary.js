@@ -12,6 +12,8 @@ const CartSummary = ({amount, totalItems}) => {
     const [discountValue, setDiscount] = useState(0)
     const [grandTotalValue, setGrandTotal] = useState(0)
 
+    // called during mount, after component mounted v.dom into real dom
+    // called during update cycle, after component v.dom updated into real dom
     useEffect( () => {
         console.log("UseEffect called for CartSummary")
         // this computing shall be performed every time render called, instead we want this computing done only when amount, totalItems changed

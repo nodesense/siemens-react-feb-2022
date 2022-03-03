@@ -1,8 +1,11 @@
 // CartItem.js
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-class CartItem extends Component {
+// PureComponent class
+// PureComponent already has shouldComponentUpdate implemented
+// it compare nextpros with this.props, nextstate with this.state, return true or false based on data change
+class CartItem extends PureComponent {
     constructor(props) {
         super(props);
     }

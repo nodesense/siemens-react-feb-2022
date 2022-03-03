@@ -8,19 +8,32 @@ class Cart extends React.Component {
     constructor(props) {
         super(props) // if we write cons, mandatory to call super/base class const
 
+        const items = []
+        for (let i = 0; i < 1000; i++) {
+            const id = i
+            const item =  {
+                id, // {id: id}
+                name: `Product ${id}`,
+                price: Math.ceil(Math.random() * 100 ),
+                qty:  Math.ceil(Math.random() * 10 )
+            }
+
+            items.push(item)
+        }
         // keyword
         // state is owned by component
         // state can be mutated via setState function
         this.state = {
             amount: 0,
             totalItems: 0,
-            items: []
+            items : items,
+            //items: []
         }
     }
 
     addItem = (e) => {
         console.log("add item called ", e)
-        const id = Math.ceil(Math.random() * 100000 )
+        const id = 10000 + Math.ceil(Math.random() * 100000 )
         const item =  {
             id, // {id: id}
             name: `Product ${id}`,
@@ -51,7 +64,7 @@ class Cart extends React.Component {
             count += item.qty
         }
 
-        // return new derived state data members
+        // return new derived state data members, this will be merged with this.state
         return {
             amount: a,
             totalItems: count
@@ -93,6 +106,12 @@ class Cart extends React.Component {
         })
     }
 
+    refresh = () => {
+        // call Cart component render,
+        // Cart render shall call cart list, cart summary, cart item renders
+        this.forceUpdate()
+    }
+
     render() {
         console.log('Cart render')
         return (
@@ -103,6 +122,8 @@ class Cart extends React.Component {
 
                 <button onClick={this.addItem} >Add Item</button> 
                 <button onClick={this.emptyCart} >Empty Cart</button> 
+
+                <button onClick={this.refresh} >Refresh</button> 
 
                 <CartList items={this.state.items} updateItem={this.updateItem} removeItem={this.removeItem} />
 
