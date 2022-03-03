@@ -2,6 +2,11 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
+import ThemeContext from '../contexts/ThemeContext';
+
+// Using the ThemeContext, how the default value given in ThemeContext works
+// If we provide value for ThemeContext, then provided value shall be taken by consumer
+
 // es6 function to create component
 // create and return virtual dom
 // destructuring in arguments level
@@ -18,6 +23,17 @@ const Footer = ({year, company, locations}) => {
             <p> Locations  
                 {locations.map (location => <span> {location} </span>)}
             </p>
+
+            {/* Consumer the one which consume the value of context */}
+            <ThemeContext.Consumer>
+                {
+                (theme) => (
+                    <div>
+                        <span>Theme is {theme}</span>
+                    </div>
+                )
+                }
+            </ThemeContext.Consumer>
         </div>
     )
 }
