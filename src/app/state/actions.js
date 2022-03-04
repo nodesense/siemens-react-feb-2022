@@ -44,5 +44,15 @@ export function fetchProducts() {
     // this function below called by thunk middleware,
     return function(dispatch, getState) {
         console.log("async function called, get products api")
+
+        axios.get("http://localhost:7070/api/products")
+            .then (response => {
+                const products = response.data;
+                console.log(products)
+                // put the products into store
+                // initProducts action is OBJECT
+                const action = initProducts(products)
+                dispatch(action)
+            })
     }
 }

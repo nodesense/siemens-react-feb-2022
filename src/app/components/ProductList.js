@@ -4,17 +4,14 @@ import axios from 'axios';
 
 import store from '../state/store';
 import { fetchProducts } from '../state/actions';
+// DEMO CODE,we yet to use react-redux bridge
 
- 
  
 
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            products: []
-        }
     }
 
     addToCart = (product) => {
@@ -26,8 +23,17 @@ class ProductList extends React.Component {
         
     }
 
+    componentWillUnmount() {
+        this.unsusbcribe()
+    }
+
     componentDidMount() {
         
+        this.unsusbcribe = store.subscribe( () => {
+            // update retrived products on ui
+            this.forceUpdate();
+        })
+
         // this action is function, not an object
         const action = fetchProducts()
         console.log("action is ", action);
@@ -43,6 +49,8 @@ class ProductList extends React.Component {
 
     render() {
         console.log('ProductList render')
+        const products = store.getState().cart.products;
+
         return (
             <div>
                 <h2>Product List</h2>
@@ -54,7 +62,7 @@ class ProductList extends React.Component {
                         <th>+Fav</th>
                     </tr>
                     {
-                        this.state.products.map (product => (
+                        products.map (product => (
                             <tr>
                                 <td>{product.name}</td>
                                 <td>{product.price}</td>

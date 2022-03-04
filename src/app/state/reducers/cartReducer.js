@@ -3,7 +3,9 @@ import * as ActionTypes from '../action-types';
 const INITIAL_STATE = {
     amount: 0,
     totalItems: 0,
-    items: []
+    items: [],
+    products: [],
+
 }
 
 // TODO: memorized function
@@ -67,6 +69,12 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                 items, 
                 amount, 
                 totalItems
+            }
+        }
+        case ActionTypes.INIT_PRODUCTS: {
+            return {
+                ...state,
+                products: action.payload.products
             }
         }
         default: 
