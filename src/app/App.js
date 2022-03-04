@@ -14,7 +14,8 @@ import {BrowserRouter as Router,
         Route, 
         Switch
     } from 'react-router-dom';
-import ProductList from './components/ProductList';
+    
+import ProductList from './containers/ProductList';
 
 const Home = () => (<div>
                         <h2>Home</h2>

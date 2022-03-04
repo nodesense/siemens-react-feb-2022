@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 // products, addToCart, addToFav are props, passed by container component
-function ProductList({products, addToCart, addToFav}) {
+function ProductList({products, addToCart,  fetchProducts, addToFav}) {
         console.log('ProductList render')
-         
+        
+        // we want fetchProducts to be called once per component
+        // useEffect called on mount/creation stage, on update stage
+        // if we want useEffect to be called only once, during creattion stage,
+        // use dependent variable [], ensure that useEffect not called on update
+        useEffect( () => {
+            console.log("Product list render use Effect")
+            fetchProducts()
+        }, [])
+
         return (
             <div>
                 <h2>Product List</h2>
