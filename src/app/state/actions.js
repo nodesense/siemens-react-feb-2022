@@ -4,6 +4,9 @@
 import * as ActionTypes from './action-types';
 import axios from 'axios';
 
+const API_END_POINT = process.env.REACT_APP_END_POINT
+console.log("API_END_POINT", API_END_POINT)
+
 // add item
 // return a action object
 // {type: '[cart addItem]', payload: {item: {id: 1, price: 100, qty: 1}}}
@@ -45,7 +48,7 @@ export function fetchProducts() {
     return function(dispatch, getState) {
         console.log("async function called, get products api")
 
-        axios.get("http://localhost:7070/api/products")
+        axios.get( API_END_POINT + "/api/products")
             .then (response => {
                 const products = response.data;
                 console.log(products)
