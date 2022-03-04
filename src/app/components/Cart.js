@@ -63,6 +63,7 @@ class Cart extends React.Component {
     componentDidMount() {
         this.unsubscribe = store.subscribe( () => {
             console.log("got susbcribe called")
+            // forceUpdate will not call shouldComponentUpdate
             this.forceUpdate()
         })
     }

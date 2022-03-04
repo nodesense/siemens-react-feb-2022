@@ -2,6 +2,12 @@ import React from 'react';
 
 import axios from 'axios';
 
+import store from '../state/store';
+import { fetchProducts } from '../state/actions';
+
+ 
+ 
+
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
@@ -21,10 +27,18 @@ class ProductList extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:7070/api/products")
-             .then (response => {
-                 this.setState({products: response.data})
-             })
+        
+        // this action is function, not an object
+        const action = fetchProducts()
+        console.log("action is ", action);
+        // the action function shall be intercepted and invoked by thunk middleware
+        // action function shall not be given to reducers
+        store.dispatch(action)
+        // axios.get("http://localhost:7070/api/products")
+        //      .then (response => {
+        //          this.setState({products: response.data})
+        //      })
+
     }
 
     render() {
