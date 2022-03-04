@@ -2,7 +2,10 @@ import React from 'react';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Cart from './components/Cart';
+
+// Cart is alias name for CartContainer
+import Cart from './containers/Cart';
+
 import Checkout from './components/Checkout';
 
 import ThemeContext from './contexts/ThemeContext';

@@ -20,4 +20,14 @@ import App from './app/App';
 // React create install for class component 
 // it will call app component render() function, get virtual dom
 // render virtual dom into real dom
-ReactDOM.render(<App />, document.getElementById('root'))
+
+import store from './app/state/store';
+import {Provider} from 'react-redux';
+
+// Provider passes store as React context to all the container component
+
+ReactDOM.render(
+            <Provider store={store}>
+            <App />
+            </Provider>
+            , document.getElementById('root'))
